@@ -1,10 +1,12 @@
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Interface {
 
     public static int Initiate(Scanner scan) {
 
+        System.out.println("Hello world");
         System.out.println("-------[Bank System]-------");
         System.out.println("[1] Login as User");
         System.out.println("[2] Login as Admin");
