@@ -12,16 +12,16 @@ public class SystemAdmin {
         this.password = password;
     }
 
-    public static boolean login(SystemAdmin admin, String input, String password) {
+    public static SystemAdmin login(SystemAdmin admin, String input, String password) {
         if (!input.isEmpty() && !password.isEmpty()) {
             if (admin.getAdminId().equals(input)) {
                 if (admin.getPassword().equals(password)) {
-                    return true;
+                    return admin;
                 }
             }
         }
         System.out.println("[Warning] Please enter the correct id and password.");
-        return false;
+        return null;
     } 
 
     public String getAdminId() {
