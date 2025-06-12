@@ -1,10 +1,11 @@
 import java.util.Scanner; 
 
-class FinanceOfficer {
+class FinanceOfficer extends BankOfficer{
     private double divRate;
     private Scanner scan;
 
-    public FinanceOfficer(Scanner scan) {
+    public FinanceOfficer(String id, String name, String email, String password, String type,Scanner scan) {
+        super(id, name, email, password, type);
         this.scan = scan;
     }
 
@@ -15,5 +16,9 @@ class FinanceOfficer {
 
     public double getDiv() {
         return divRate;
+    }
+
+    public void getReport(){
+        
     }
 }
