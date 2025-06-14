@@ -1,25 +1,94 @@
 import java.util.ArrayList;
 
 public class AccountHolder extends User {
-    //properties
-    private double mainBalance; //main acc punya balance (tak sama dengan tabung)
+    private BankAccount mainAccount;
     private ArrayList<Tabung> tabungAccounts;
     private ArrayList<Transaction> transactions;
 
-    //constructor
-    public AccountHolder(String id, String name, String email, String password, String type){
+    public AccountHolder(String id, String name, String email, String password, String type, BankAccount mainAccount){
         super(id, name, email, password, type);
-        //this.accounts = new ArrayList<>();
+        this.mainAccount = mainAccount;
+        this.tabungAccounts = new ArrayList<>();
         this.transactions = new ArrayList<>();
     }
 
-    //method
-    public void addAccount(Tabung account){ //add account tabung
-        //accounts.add(account); 
+    public void depositToMain(double amount){
+        mainAccount.deposit(amount);
+        transactions.add(new Transaction("TXN" + (transactions.size() + 1), amount, "Main Deposit"));
     }
 
-    public void addTransaction(Transaction transaction){ //add transaction
-        transactions.add(transaction);
+    public void withdrawFromMain(double amount){
+        mainAccount.withdraw(amount);
+        transactions.add(new Transaction("TXN" + (transactions.size() + 1), amount, "Main Withdraw"));
+    }
+
+    public double getMainBalance(){
+        return mainAccount.getBalance();
+    }
+
+    public void addTabungAccount(Tabung tabung){
+        tabungAccounts.add(tabung);
+    }
+
+    //from Main Acc to Tabung
+    public void transferToTabung(String tabungID, double amount){
+        Tabung tabung = getTabungById(tabungID);
+        if (tabung != null){
+            if (mainAccount.getBalance() >= amount){
+                mainAccount.withdraw(amount);
+                tabung.deposit(amount);
+                transactions.add(new Transaction("TXN" + (transactions.size() + 1), amount, "Transfer To Tabung" + tabungID));
+            }
+
+            else{
+                System.out.println("Insufficient funds in Main Account.");
+        }
+        }
+
+        else{
+            System.out.println("Tabung account not found.");
+        }
+    }
+
+    public void transferFromTabung(String tabungID, double amount){
+        Tabung tabung = getTabungById(tabungID);
+        if (tabung != null){
+            if (tabung.getBalance() >= amount){
+                tabung.withdraw(amount);
+                mainAccount.deposit(amount);
+                transactions.add(new Transaction("TXN" + (transactions.size() + 1), amount, "Transfer From Tabung" + tabungID));
+            }
+
+            else{
+                System.out.println("Insufficient funds in Main Account.");
+        }
+        }
+        
+        else {
+            System.out.println("Tabung account not found.");
+        }
+    }
+
+    //Find Tabung by its ID
+    public Tabung getTabungById(String tabungID){
+        for (Tabung t : tabungAccounts) {
+            if (t.getAccountNumber().equals(tabungID)){
+                return t;
+            }
+        }
+
+        return null;
+    }
+
+    public void viewTransactionHistory(){
+        if (transactions.isEmpty()){
+            System.out.println("No transactions yet.");
+        }
+        else{
+            for (Transaction t : transactions){
+                t.viewTransactionDetails();
+            }
+        }
     }
 
     //public void requestLoan(){}
