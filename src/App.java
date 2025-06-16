@@ -2,57 +2,112 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
+
     public static void main(String[] args) {
 
+        // initialize util to use
         Scanner scan = new Scanner(System.in);
-        //FinanceOfficer officer = new FinanceOfficer(scan);
+
+        // initialize variables
         ArrayList<User> userList = new ArrayList<>();
+        ArrayList<AccountHolder> accountList = new ArrayList<>();
         User currentUser = null;
         SystemAdmin currentAdmin = null;
 
+        // initialize objects
         SystemAdmin admin = new SystemAdmin("admin123", "raid", "12345");
-        User user1 = new AccountHolder("ahmd", "Ahmad Ibrahim", "ahmad@gmail.com", "12345678", "AccountHolder");
+        AccountHolder acc1 = new AccountHolder("fikri", "Fikri Nabil", "fikri@gmail.com", "12345678", "AccountHolder", new BankAccount("1001", 1500));
+        AccountHolder acc2 = new AccountHolder("hurin", "Hurin", "hurin@gmail.com", "12345678", "AccountHolder", new BankAccount("1002", 2000));
+        BankOfficer bankOfficer1 = new BankOfficer("alya", "Nur Alya", "alya@gmail.com", "123456", "BankOfficer");
+        
+        userList.add(acc1);
+        userList.add(acc2);
+        userList.add(bankOfficer1);
 
-        userList.add(user1);
+        accountList.add(acc1);
+        accountList.add(acc2);
 
-        System.out.println("Hello world");
-        System.out.println("-------[Bank System]-------");
-        System.out.println("[1] Login as User");
-        System.out.println("[2] Login as Admin");
-        int option = scan.nextInt();
-        scan.nextLine();
+        Menu menu = new Menu(scan);
 
-        while (option < 1 || option > 2) {
+        int option = 0;
+
+        System.out.println("=============== Bank System ===============");
+        while (option != 4) {
+
             System.out.println("[1] Login as User");
             System.out.println("[2] Login as Admin");
+            System.out.println("[3] Exit System");
+            System.out.print("\nOption : ");
             option = scan.nextInt();
             scan.nextLine();
-        }
+            System.out.println("===========================================");
 
-        if (option == 1) {
-            System.out.println("Hello! Please login to continue... ");
-            while (currentUser == null) {
-                System.out.println("\nID/Email: ");
-                String input = scan.nextLine();
-                System.out.println("Password :");
-                String password = scan.nextLine();
-                currentUser = User.login(userList, input, password);
-            }
-            Menu.greetings(currentUser);
-        }
-        else { // if option 2
-             System.out.println("Hello! Please login to continue... ");
-            while (currentAdmin == null) {
-                System.out.println("\nID: ");
-                String input = scan.nextLine();
-                System.out.println("Password :");
-                String password = scan.nextLine();
-                currentAdmin = SystemAdmin.login(admin, input, password);
-            }
-            Menu.greetings(currentAdmin);
-        }
+            if (option == 1) {
 
-        System.out.println("-------[Menu]-------");
+                // login prompt for user
+                System.out.println("Hello! Please login to continue... ");
+                while (currentUser == null) {
+                    System.out.println("\nID/Email: ");
+                    String input = scan.nextLine();
+                    System.out.println("Password :");
+                    String password = scan.nextLine();
+                    currentUser = User.login(userList, input, password);
+                }
+                System.out.println("===========================================");
+
+                // greet user
+                menu.greetings(currentUser);
+
+                // if user is accountHolder, display the menu for the role
+                if (currentUser.getType().equals("AccountHolder")) {
+                    menu.displayAccountMenu();
+                }
+                else if (currentUser.getType().equals("BankOfficer")) {
+                    menu.displayBankMenu((BankOfficer) currentUser, accountList, userList);
+                }
+                else if (currentUser.getType().equals("FinanceOfficer")) {
+                    menu.displayFinanceMenu();
+                }
+                else {
+                    menu.displayLoanMenu();
+                }
+
+                currentUser = null;
+            }
+            else if (option == 2) { // if option 2
+
+                // login prompt for admin
+                System.out.println("Hello! Please login to continue... ");
+                while (currentAdmin == null) {
+                    System.out.println("\nID: ");
+                    String input = scan.nextLine();
+                    System.out.println("Password :");
+                    String password = scan.nextLine();
+                    currentAdmin = SystemAdmin.login(admin, input, password);
+                }
+                System.out.println("===========================================");
+
+                // greet admin
+                menu.greetings(currentAdmin);
+
+                currentAdmin = null;
+            }
+            else if (option == 3) { // if want to exit
+                System.out.println("Are you sure you want to exit the program?");
+                System.out.println("[1] Yes");
+                System.out.println("[2] No");
+                System.out.print("\nChoice : ");
+                int choice = scan.nextInt();
+                scan.nextLine();
+                System.out.println("===========================================");
+                if (choice == 1) {
+                    option = 4; // terminate the program
+                }
+            }
+            else {
+                menu.invalid();
+            }
+        }
 
         scan.close();
     }
