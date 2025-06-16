@@ -37,7 +37,7 @@ public class App {
             System.out.println("1. Login as User");
             System.out.println("2. Login as Admin");
             System.out.println("3. Exit System");
-            System.out.print("\nOption : ");
+            System.out.print("\nOption: ");
             option = scan.nextInt();
             scan.nextLine();
             System.out.println("===========================================");
@@ -47,9 +47,9 @@ public class App {
                 // login prompt for user
                 System.out.println("Hello! Please login to continue... ");
                 while (currentUser == null) {
-                    System.out.println("\nID/Email: ");
+                    System.out.print("\nID/Email: ");
                     String input = scan.nextLine();
-                    System.out.println("Password :");
+                    System.out.print("Password: ");
                     String password = scan.nextLine();
                     currentUser = User.login(userList, input, password);
                 }
@@ -79,9 +79,9 @@ public class App {
                 // login prompt for admin
                 System.out.println("Hello! Please login to continue... ");
                 while (currentAdmin == null) {
-                    System.out.println("\nID: ");
+                    System.out.print("\nID: ");
                     String input = scan.nextLine();
-                    System.out.println("Password :");
+                    System.out.print("Password: ");
                     String password = scan.nextLine();
                     currentAdmin = SystemAdmin.login(admin, input, password);
                 }

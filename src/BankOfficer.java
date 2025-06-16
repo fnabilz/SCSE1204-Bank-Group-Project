@@ -9,17 +9,17 @@ public class BankOfficer extends User {
     
     public void registerAccount(ArrayList<AccountHolder> accountList, ArrayList<User> userList, Scanner scan) {
 
-        System.out.print("ID : ");
+        System.out.print("ID: ");
         String id = scan.nextLine();
-        System.out.print("Name : ");
+        System.out.print("Name: ");
         String name = scan.nextLine();
-        System.out.print("Email : ");
+        System.out.print("Email: ");
         String email = scan.nextLine();
-        System.out.print("Password : ");
+        System.out.print("Password: ");
         String password = scan.nextLine();
-        System.out.print("Bank Account ID : ");
+        System.out.print("Bank Account ID: ");
         String accId = scan.nextLine();
-        System.out.print("Balance : RM ");
+        System.out.print("Balance: ");
         double balance = scan.nextDouble();
 
         AccountHolder newAcc = new AccountHolder(id, name, email, password, new BankAccount(accId, balance));
