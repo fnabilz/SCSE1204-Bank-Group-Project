@@ -9,9 +9,10 @@ public class App {
         ArrayList<User> userList = new ArrayList<>();
         User currentUser = null;
         SystemAdmin currentAdmin = null;
-
+        
+        BankAccount ba1 = new BankAccount("AH001", 200);
         SystemAdmin admin = new SystemAdmin("admin123", "raid", "12345");
-        User user1 = new AccountHolder("ahmd", "Ahmad Ibrahim", "ahmad@gmail.com", "12345678", "AccountHolder");
+        User user1 = new AccountHolder("ahmd", "Ahmad Ibrahim", "ahmad@gmail.com", "12345678", "AccountHolder", ba1);
 
         userList.add(user1);
 
