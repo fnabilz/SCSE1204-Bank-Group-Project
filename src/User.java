@@ -38,7 +38,7 @@ public class User {
                 }
             }
         }
-        System.out.println("[Warning] Please enter the correct id/email and password.");
+        System.out.println("\n[Warning] Please enter the correct id/email and password.");
         return null;
     } 
 
@@ -58,7 +58,7 @@ public class User {
         return this.name;
     }
 
-    private String getType() {
+    public String getType() {
         return this.type;
     }
 

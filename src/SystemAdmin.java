@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 // SystemAdmin class
 public class SystemAdmin {
