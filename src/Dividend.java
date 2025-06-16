@@ -1,15 +1,9 @@
 class Dividend{
-    private FinanceOfficer finOfficer;  //to get dividend
-    private double rate;
     private double divAmount;
 
-    public double getRate(){
-        rate = finOfficer.getDiv();
-        return rate;
-    }
-
-    public double calcDivAmount(BankAccount bankAccount){
-        divAmount = bankAccount.balance*rate;
+    // Calculate dividend without needing FinanceOfficer
+    public double calcDivAmount(double balance, double divRate) {
+        this.divAmount = balance * divRate;
         return divAmount;
     }
     

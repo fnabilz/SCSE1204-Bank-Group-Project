@@ -1,4 +1,5 @@
-import java.util.Scanner; 
+import java.util.ArrayList;
+import java.util.Scanner;
 
 class FinanceOfficer extends BankOfficer{
     private double divRate;
@@ -9,16 +10,39 @@ class FinanceOfficer extends BankOfficer{
         this.scan = scan;
     }
 
-    public void setDiv() {
+    public void setDivRate() {
         System.out.print("Dividend rate for this year: ");
-        divRate = scan.nextDouble();
+        this.divRate = scan.nextDouble();
     }
 
-    public double getDiv() {
+    public double getDivRate() {
         return divRate;
     }
 
-    public void getReport(){
-        
+    public void processDiv(ArrayList<BankAccount> ba){
+        if (ba == null || ba.isEmpty())
+            System.out.println("No accounts to process!");
+            
+        else{
+            System.out.println("\n=== Dividend Distribution Report ===");
+            System.out.printf("Rate: %.2f%%\n", divRate * 100);
+            System.out.println("----------------------------------");
+
+            for(int i=0; i<ba.size(); i++){
+                BankAccount acc = ba.get(i); // Get account at index i
+                double oldBal = acc.getBalance();
+                double divAmount = oldBal * divRate;
+                double newBal = oldBal + divAmount;
+
+                acc.balance = newBal;
+
+                System.out.printf(
+                "Account ID: %s | Old Balance: RM%.2f | Dividend: RM%.2f | New Balance: RM%.2f\n",
+                acc.getAccountID(), oldBal, divAmount, newBal);
+            }
+
+            System.out.println("----------------------------------");
+        }
     }
+
 }
