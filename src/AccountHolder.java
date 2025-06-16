@@ -5,8 +5,8 @@ public class AccountHolder extends User {
     private ArrayList<Tabung> tabungAccounts;
     private ArrayList<Transaction> transactions;
 
-    public AccountHolder(String id, String name, String email, String password, String type, BankAccount mainAccount){
-        super(id, name, email, password, type);
+    public AccountHolder(String id, String name, String email, String password, BankAccount mainAccount){
+        super(id, name, email, password, "AccountHolder");
         this.mainAccount = mainAccount;
         this.tabungAccounts = new ArrayList<>();
         this.transactions = new ArrayList<>();

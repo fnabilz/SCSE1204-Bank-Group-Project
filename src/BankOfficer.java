@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class BankOfficer extends User {
 
-    public BankOfficer(String id, String name, String email, String password, String type) {
-        super(id, name, email, password, type);
+    public BankOfficer(String id, String name, String email, String password) {
+        super(id, name, email, password, "BankOfficer");
     }
     
     public void registerAccount(ArrayList<AccountHolder> accountList, ArrayList<User> userList, Scanner scan) {
@@ -22,7 +22,7 @@ public class BankOfficer extends User {
         System.out.print("Balance : RM ");
         double balance = scan.nextDouble();
 
-        AccountHolder newAcc = new AccountHolder(id, name, email, password, "AccountHolder", new BankAccount(accId, balance));
+        AccountHolder newAcc = new AccountHolder(id, name, email, password, new BankAccount(accId, balance));
 
         accountList.add(newAcc);
         userList.add(newAcc);

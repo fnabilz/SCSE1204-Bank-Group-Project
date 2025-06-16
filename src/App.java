@@ -16,9 +16,9 @@ public class App {
 
         // initialize objects
         SystemAdmin admin = new SystemAdmin("admin123", "raid", "12345");
-        AccountHolder acc1 = new AccountHolder("fikri", "Fikri Nabil", "fikri@gmail.com", "12345678", "AccountHolder", new BankAccount("1001", 1500));
-        AccountHolder acc2 = new AccountHolder("hurin", "Hurin", "hurin@gmail.com", "12345678", "AccountHolder", new BankAccount("1002", 2000));
-        BankOfficer bankOfficer1 = new BankOfficer("alya", "Nur Alya", "alya@gmail.com", "123456", "BankOfficer");
+        AccountHolder acc1 = new AccountHolder("fikri", "Fikri Nabil", "fikri@gmail.com", "12345678", new BankAccount("1001", 1500));
+        AccountHolder acc2 = new AccountHolder("hurin", "Hurin", "hurin@gmail.com", "12345678", new BankAccount("1002", 2000));
+        BankOfficer bankOfficer1 = new BankOfficer("alya", "Nur Alya", "alya@gmail.com", "123456");
         
         userList.add(acc1);
         userList.add(acc2);
@@ -34,9 +34,9 @@ public class App {
         System.out.println("=============== Bank System ===============");
         while (option != 4) {
 
-            System.out.println("[1] Login as User");
-            System.out.println("[2] Login as Admin");
-            System.out.println("[3] Exit System");
+            System.out.println("1. Login as User");
+            System.out.println("2. Login as Admin");
+            System.out.println("3. Exit System");
             System.out.print("\nOption : ");
             option = scan.nextInt();
             scan.nextLine();
@@ -60,16 +60,16 @@ public class App {
 
                 // if user is accountHolder, display the menu for the role
                 if (currentUser.getType().equals("AccountHolder")) {
-                    menu.displayAccountMenu();
+                    menu.displayAccountMenu((AccountHolder) currentUser);
                 }
                 else if (currentUser.getType().equals("BankOfficer")) {
                     menu.displayBankMenu((BankOfficer) currentUser, accountList, userList);
                 }
                 else if (currentUser.getType().equals("FinanceOfficer")) {
-                    menu.displayFinanceMenu();
+                    menu.displayFinanceMenu((FinanceOfficer) currentUser);
                 }
                 else {
-                    menu.displayLoanMenu();
+                    menu.displayLoanMenu((LoanOfficer) currentUser);
                 }
 
                 currentUser = null;
@@ -94,8 +94,8 @@ public class App {
             }
             else if (option == 3) { // if want to exit
                 System.out.println("Are you sure you want to exit the program?");
-                System.out.println("[1] Yes");
-                System.out.println("[2] No");
+                System.out.println("1. Yes");
+                System.out.println("2. No");
                 System.out.print("\nChoice : ");
                 int choice = scan.nextInt();
                 scan.nextLine();
