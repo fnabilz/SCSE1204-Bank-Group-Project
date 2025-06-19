@@ -66,7 +66,7 @@ public class App {
                     menu.displayBankMenu((BankOfficer) currentUser, accountList, userList);
                 }
                 else if (currentUser.getType().equals("FinanceOfficer")) {
-                    menu.displayFinanceMenu((FinanceOfficer) currentUser);
+                    menu.displayFinanceMenu((FinanceOfficer) currentUser, accountList);
                 }
                 else {
                     menu.displayLoanMenu((LoanOfficer) currentUser);
