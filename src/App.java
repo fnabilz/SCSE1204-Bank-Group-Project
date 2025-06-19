@@ -19,10 +19,12 @@ public class App {
         AccountHolder acc1 = new AccountHolder("fikri", "Fikri Nabil", "fikri@gmail.com", "12345678", new BankAccount("1001", 1500));
         AccountHolder acc2 = new AccountHolder("hurin", "Hurin", "hurin@gmail.com", "12345678", new BankAccount("1002", 2000));
         BankOfficer bankOfficer1 = new BankOfficer("alya", "Nur Alya", "alya@gmail.com", "123456");
+        FinanceOfficer financeOfficer1 = new FinanceOfficer("balqis", "Balqis", "balqis@gmail.com", "01234", scan);
         
         userList.add(acc1);
         userList.add(acc2);
         userList.add(bankOfficer1);
+        userList.add(financeOfficer1);
 
         accountList.add(acc1);
         accountList.add(acc2);

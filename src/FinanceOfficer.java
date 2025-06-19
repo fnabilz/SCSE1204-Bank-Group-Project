@@ -19,26 +19,25 @@ class FinanceOfficer extends User{
         return divRate;
     }
 
-    public void processDiv(ArrayList<BankAccount> ba){
-        if (ba == null || ba.isEmpty())
-            System.out.println("No accounts to process!");
+    public void processDiv(ArrayList<AccountHolder> ah){
+        if (ah == null || ah.isEmpty())
+            System.out.println("No account holders to process!");
             
         else{
             System.out.println("\n=== Dividend Distribution Report ===");
             System.out.printf("Rate: %.2f%%\n", divRate * 100);
             System.out.println("----------------------------------");
 
-            for(int i=0; i<ba.size(); i++){
-                BankAccount acc = ba.get(i); // Get account at index i
-                double oldBal = acc.getBalance();
+            for(int i=0; i<ah.size(); i++){
+                AccountHolder accH = ah.get(i); // Get account at index i
+                double oldBal = accH.getMainBalance();
                 double divAmount = oldBal * divRate;
-                double newBal = oldBal + divAmount;
-
-                acc.balance = newBal;
+                accH.depositToMain(divAmount, "Dividend");
+                double newBal = accH.getMainBalance();
 
                 System.out.printf(
                 "Account ID: %s | Old Balance: RM%.2f | Dividend: RM%.2f | New Balance: RM%.2f\n",
-                acc.getAccountID(), oldBal, divAmount, newBal);
+                accH.getId(), oldBal, divAmount, newBal);
             }
 
             System.out.println("----------------------------------");

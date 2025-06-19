@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu {
     private Scanner scan = null;
@@ -107,7 +107,7 @@ public class Menu {
 
     }
 
-    public void displayFinanceMenu(FinanceOfficer fo) {
+    public void displayFinanceMenu(FinanceOfficer fo, ArrayList<AccountHolder> accountList) {
         int d = 0;
         do {
             System.out.println("1. Set Dividend");
@@ -119,9 +119,14 @@ public class Menu {
             switch(d) {
                 case 1:
                     fo.setDivRate();
+                    System.out.println("Dividend has been set.");
+                    this.resume();
+                    System.out.println("===========================================");
                     break;
                 case 2:
-                    //fo.processDiv(); //bankAccount list dlm kurungan?
+                    fo.processDiv(accountList);
+                    this.resume();
+                    System.out.println("===========================================");
                     break;
                 case 3:
                     System.out.println("Exiting...");

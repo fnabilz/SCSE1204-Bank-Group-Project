@@ -17,6 +17,12 @@ public class AccountHolder extends User {
         transactions.add(new Transaction("TXN" + (transactions.size() + 1), amount, "Main Deposit"));
     }
 
+    //for dividend
+    public void depositToMain(double amount, String type){
+        mainAccount.deposit(amount);
+        transactions.add(new Transaction("TXN" + (transactions.size() + 1), amount, type));
+    }
+
     public void withdrawFromMain(double amount){
         mainAccount.withdraw(amount);
         transactions.add(new Transaction("TXN" + (transactions.size() + 1), amount, "Main Withdraw"));
