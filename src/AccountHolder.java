@@ -97,5 +97,10 @@ public class AccountHolder extends User {
         }
     }
 
+    public ArrayList<Tabung> getTabungAccounts() {
+        return tabungAccounts;
+    }
+
+
     //public void requestLoan(){}
 }

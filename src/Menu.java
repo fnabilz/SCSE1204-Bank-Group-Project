@@ -48,23 +48,91 @@ public class Menu {
                     System.out.println("===========================================");
                     break;
                 case 4:
-                    //ah.addTabungAccount(tabung);
+                    System.out.println("Enter Tabung account number: ");
+                    String tabungAccNo = scan.nextLine();
+
+                    System.out.println("Enter amount to tranfer from Main Account to Tabung: ");
+                    double transferAmt = scan.nextDouble();
+
+                    if(ah.getMainBalance()>=transferAmt){
+                        ah.withdrawFromMain(transferAmt);
+
+                        Tabung newTabung = new Tabung(tabungAccNo, transferAmt);
+                        ah.addTabungAccount(newTabung);
+                        System.out.println("Tabung account created.");
+                    }
+                    else
+                        System.out.println("Insufficiet amount in Main Account.");
+
+                    this.resume();
+                    System.out.println("===========================================");
                     break;
                 case 5:
-                    System.out.print("Enter amount: ");
+                    ArrayList<Tabung> tabungs = ah.getTabungAccounts();
+
+                    if (tabungs.isEmpty()) {
+                        System.out.println("You have no Tabung accounts.");
+                        break;
+                    }
+
+                    System.out.println("Your Tabung Accounts: ");
+                    for (int i = 0; i < tabungs.size(); i++) {
+                        Tabung t = tabungs.get(i);
+                        System.out.println((i + 1) + ". ID: " + t.getAccountNumber() + ", Balance: " + t.getBalance());
+                    }
+
+                    System.out.print("Choose Tabung: ");
+                    int choice = scan.nextInt();
+                    scan.nextLine(); // clean leftover newline
+
+                    if (choice < 1 || choice > tabungs.size()) {
+                        System.out.println("Invalid selection.");
+                        break;
+                    }
+
+                    Tabung selectedTabung = tabungs.get(choice - 1);
+
+                    System.out.print("Enter amount to transfer from Main Account: ");
                     double amt3 = scan.nextDouble();
+
+                    ah.transferToTabung(selectedTabung.getAccountNumber(), amt3);
+                    
                     scan.nextLine();
                     this.resume();
                     System.out.println("===========================================");
-                    //ah.transferToTabung(tabungID, amt3);
                     break;
                 case 6:
-                    System.out.print("Enter amount: ");
+                    ArrayList<Tabung> tabungs2 = ah.getTabungAccounts();
+
+                    if (tabungs2.isEmpty()) {
+                        System.out.println("You have no Tabung accounts.");
+                        break;
+                    }
+
+                    System.out.println("Your Tabung Accounts:");
+                    for (int i = 0; i < tabungs2.size(); i++) {
+                        Tabung t = tabungs2.get(i);
+                        System.out.println((i + 1) + ". ID: " + t.getAccountNumber() + " | Balance: " + t.getBalance());
+                    }
+
+                    System.out.print("Choose Tabung: ");
+                    int choice2 = scan.nextInt();
+
+                    if (choice2 < 1 || choice2 > tabungs2.size()) {
+                        System.out.println("Invalid selection.");
+                        break;
+                    }
+
+                    Tabung selectedTabung2 = tabungs2.get(choice2 - 1);
+                    
+                    System.out.print("Enter amount to transfer from Tabung: ");
                     double amt4 = scan.nextDouble();
+
+                    ah.transferFromTabung(selectedTabung2.getAccountNumber(), amt4);
+
                     scan.nextLine();
                     this.resume();
                     System.out.println("===========================================");
-                    //ah.transferFromTabung(tabungID, amt4);
                     break;
                 case 7:
                     //loan
