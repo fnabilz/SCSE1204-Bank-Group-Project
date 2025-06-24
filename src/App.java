@@ -91,6 +91,7 @@ public class App {
 
                 // greet admin
                 menu.greetings(currentAdmin);
+                menu.displayAdmin(currentAdmin, userList);
 
                 currentAdmin = null;
             }

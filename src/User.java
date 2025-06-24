@@ -62,4 +62,8 @@ public class User {
         return this.type;
     }
 
+    @Override
+    public String toString() {
+        return "[ID: " + getId() + ", Name: " + getName() + ", Email: " + getEmail() + ", Password: " + getPassword() + ", Type: " + getType() + "]";
+    }
 }
