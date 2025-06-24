@@ -174,6 +174,9 @@ public class Menu {
                 System.out.println("Exiting...");
                 System.out.println("===========================================");
             }
+            else {
+                this.invalid();
+            }
 
         }
 
@@ -262,6 +265,16 @@ public class Menu {
                 laporan.displayReport(userList);
                 this.resume();
                 System.out.println("===========================================");
+            }
+            else if (pilih == 2) {
+                // yada yada
+            }
+            else if (pilih == 3) {
+                System.out.println("Exiting...");
+                System.out.println("===========================================");
+            }
+            else {
+                this.invalid();
             }
         }
     }
