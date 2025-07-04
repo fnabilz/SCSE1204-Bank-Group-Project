@@ -6,7 +6,7 @@ public class Menu {
 
     public Menu(Scanner scan) {
         this.scan = scan;
-    }
+    };
 
     public void displayAccountMenu(AccountHolder ah) {
         int b = 0;
@@ -170,13 +170,6 @@ public class Menu {
                 this.resume();
                 System.out.println("===========================================");
             }
-            else if (pilih == 2) {
-                System.out.println("Exiting...");
-                System.out.println("===========================================");
-            }
-            else {
-                this.invalid();
-            }
 
         }
 
@@ -190,8 +183,6 @@ public class Menu {
             System.out.println("3. Exit");
             System.out.print("\nChoose: ");
             d = scan.nextInt();
-            scan.nextLine();
-            System.out.println("===========================================");
 
             switch(d) {
                 case 1:
@@ -221,20 +212,20 @@ public class Menu {
         do {
             System.out.println("1. Approve Loan");
             System.out.println("2. Reject Loan");
-            System.out.println("3. Process Loan");
+            System.out.println("3. Print Process Loan");
             System.out.println("4. Exit");
             System.out.print("\nChoose: ");
             e = scan.nextInt();
-            scan.nextLine();
-            System.out.println("===========================================");
 
             switch(e) {
                 case 1:
-
+                    //lo.approveLoan();
                     break;
                 case 2:
+                    //lo.rejectLoan();
                     break;
                 case 3:
+                    lo.getProcessedLoans();
                     break;
                 case 4:
                     System.out.println("Exiting...");
@@ -245,38 +236,6 @@ public class Menu {
             }
 
         } while (e!=4);
-    }
-
-    public void displayAdmin(SystemAdmin currentAdmin, ArrayList<User> userList) {
-
-        int pilih = 0;
-
-        while (pilih != 3) {
-            System.out.println("1. Display System Report");
-            System.out.println("2. Modify User");
-            System.out.println("3. Exit");
-            System.out.print("\nChoice: ");
-            pilih = scan.nextInt();
-            scan.nextLine();
-            System.out.println("===========================================");
-
-            if (pilih == 1) {
-                Report laporan = new Report("1001");
-                laporan.displayReport(userList);
-                this.resume();
-                System.out.println("===========================================");
-            }
-            else if (pilih == 2) {
-                // yada yada
-            }
-            else if (pilih == 3) {
-                System.out.println("Exiting...");
-                System.out.println("===========================================");
-            }
-            else {
-                this.invalid();
-            }
-        }
     }
 
     public void greetings(User currentUser) {
