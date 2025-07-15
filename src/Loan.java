@@ -97,9 +97,9 @@ class Loan {
                 ", applicationDate=" + applicationDate +
                 ", approvalDate=" + approvalDate +
                 ", loanOfficer=" + (loanOfficer != null ? loanOfficer.getName() : "None") +
-                ", monthlyPayment=" + calculateMonthlyPayment() +
-                ", totalPayment=" + calculateTotalPayment() +
-                ", totalInterest=" + calculateTotalInterest() +
+                ", monthlyPayment=" + String.format("%.2f", calculateMonthlyPayment()) +
+                ", totalPayment=" + String.format("%.2f", calculateTotalPayment()) +
+                ", totalInterest=" + String.format("%.2f", calculateTotalInterest()) +
                 ']';
     }
 }
