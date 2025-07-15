@@ -88,7 +88,7 @@ class Loan {
     
     @Override
     public String toString() {
-        return "Loan{" +
+        return "Loan [" +
                 "loanType='" + loanType + '\'' +
                 ", loanId='" + loanId + '\'' +
                 ", amount=" + amount +
@@ -97,6 +97,6 @@ class Loan {
                 ", applicationDate=" + applicationDate +
                 ", approvalDate=" + approvalDate +
                 ", loanOfficer=" + (loanOfficer != null ? loanOfficer.getName() : "None") +
-                '}';
+                ']';
     }
 }
