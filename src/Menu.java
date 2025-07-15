@@ -136,13 +136,13 @@ public class Menu {
                     break;
                 case 7:
                     String loanId = Loan.generateLoanId();
-                    System.out.println("Enter loan type: ");
+                    System.out.print("Enter loan type: ");
                     String type = scan.nextLine();
-                    System.out.println("Enter amount: ");
+                    System.out.print("Enter amount: ");
                     double amount = scan.nextDouble();
-                    System.out.println("Enter interest rate (%): ");
+                    System.out.print("Enter interest rate (%): ");
                     double rate = scan.nextDouble();
-                    System.out.println("Enter term (years): ");
+                    System.out.print("Enter term (years): ");
                     int term = scan.nextInt();
                     scan.nextLine();
 
