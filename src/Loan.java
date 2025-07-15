@@ -2,6 +2,7 @@ import java.util.Date;
 
 // Loan class
 class Loan {
+
     private String loanType;
     private String loanId;
     private double amount;
@@ -23,6 +24,12 @@ class Loan {
 
     public String getLoanType() {
         return loanType;
+    }
+
+    public static int idCounter = 1;
+
+    public static String generateLoanId(){
+        return String.format("LN%04d", idCounter++);
     }
 
     public String getLoanId() {

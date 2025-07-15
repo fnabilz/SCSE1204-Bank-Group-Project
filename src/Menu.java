@@ -8,7 +8,7 @@ public class Menu {
         this.scan = scan;
     };
 
-    public void displayAccountMenu(AccountHolder ah) {
+    public void displayAccountMenu(AccountHolder ah, LoanOfficer lo) {
         int b = 0;
         do {
             System.out.println("1. Deposit Money");
@@ -135,7 +135,22 @@ public class Menu {
                     System.out.println("===========================================");
                     break;
                 case 7:
-                    //loan
+                    String loanId = Loan.generateLoanId();
+                    System.out.println("Enter loan type: ");
+                    String type = scan.nextLine();
+                    System.out.println("Enter amount: ");
+                    double amount = scan.nextDouble();
+                    System.out.println("Enter interest rate (%): ");
+                    double rate = scan.nextDouble();
+                    System.out.println("Enter term (years): ");
+                    int term = scan.nextInt();
+                    scan.nextLine();
+
+                    Loan loan = ah.requestLoan(loanId, type, amount, rate, term);
+                    lo.addPendingLoan(loan);
+                    System.out.println("Your loan application has been submitted and is pending approval.");
+                    this.resume();
+                    System.out.println("===========================================");                
                     break;
                 case 8:
                     ah.viewTransactionHistory();
@@ -238,6 +253,39 @@ public class Menu {
         } while (e!=4);
     }
 
+    public void displayAdmin(SystemAdmin sa, ArrayList<User> userList){
+        int f=0;
+        do { 
+            System.out.println("1. Generate Report.");
+            System.out.println("2. Modify User Account.");
+            System.out.println("3. Exit.");
+            System.out.println("\nChoose: ");
+            f = scan.nextInt();
+            scan.nextLine();   //clean leftover newline
+
+            switch(f){
+                case 1:
+                    System.out.println("Enter Report ID: ");
+                    String reportId = scan.nextLine();
+
+                    Report report = new Report(reportId);
+                    report.displayReport(userList);
+                    this.resume();
+                    System.out.println("===========================================");
+                    break;
+                case 2:
+                    // to modify user account
+                    break;
+                case 3:
+                    System.out.println("Exiting...");
+                    System.out.println("===========================================");
+                    break;
+                default:
+                    this.invalid();
+            }
+        } while (f!=3);
+    }
+
     public void greetings(User currentUser) {
         System.out.println("Hello " + currentUser.getName() + ",\n");
     }
@@ -256,4 +304,5 @@ public class Menu {
         this.resume();
         System.out.println("===========================================");
     }
+
 }

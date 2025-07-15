@@ -20,11 +20,13 @@ public class App {
         AccountHolder acc2 = new AccountHolder("hurin", "Hurin", "hurin@gmail.com", "12345678", new BankAccount("1002", 2000));
         BankOfficer bankOfficer1 = new BankOfficer("alya", "Nur Alya", "alya@gmail.com", "123456");
         FinanceOfficer financeOfficer1 = new FinanceOfficer("balqis", "Balqis", "balqis@gmail.com", "01234", scan);
+        LoanOfficer loanOfficer1 = new LoanOfficer("farah", "farahaqilah", "farah@gmail.com", "012345");
         
         userList.add(acc1);
         userList.add(acc2);
         userList.add(bankOfficer1);
         userList.add(financeOfficer1);
+        userList.add(loanOfficer1);
 
         accountList.add(acc1);
         accountList.add(acc2);
@@ -62,7 +64,7 @@ public class App {
 
                 // if user is accountHolder, display the menu for the role
                 if (currentUser.getType().equals("AccountHolder")) {
-                    menu.displayAccountMenu((AccountHolder) currentUser);
+                    menu.displayAccountMenu((AccountHolder) currentUser, loanOfficer1);
                 }
                 else if (currentUser.getType().equals("BankOfficer")) {
                     menu.displayBankMenu((BankOfficer) currentUser, accountList, userList);

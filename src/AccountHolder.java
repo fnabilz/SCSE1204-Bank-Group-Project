@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AccountHolder extends User {
     private BankAccount mainAccount;
@@ -101,6 +102,11 @@ public class AccountHolder extends User {
         return tabungAccounts;
     }
 
-
-    //public void requestLoan(){}
+    public Loan requestLoan(String loanId, String loanType, double amount, double interestRate, int term){
+        Date now = new Date();
+        Loan loan = new Loan(loanId, loanType, amount, interestRate, term, now, null);
+        System.out.println("Requested loan: " + loanId);
+        return loan;
+    }
+    
 }
