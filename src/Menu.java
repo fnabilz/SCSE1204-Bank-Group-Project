@@ -62,7 +62,7 @@ public class Menu {
                         System.out.println("Tabung account created.");
                     }
                     else
-                        System.out.println("Insufficiet amount in Main Account.");
+                        System.out.println("Insufficient amount in Main Account.");
 
                     this.resume();
                     System.out.println("===========================================");
@@ -198,6 +198,8 @@ public class Menu {
             System.out.println("3. Exit");
             System.out.print("\nChoose: ");
             d = scan.nextInt();
+            scan.nextLine();
+            System.out.println("===========================================");
 
             switch(d) {
                 case 1:
@@ -231,6 +233,8 @@ public class Menu {
             System.out.println("4. Exit");
             System.out.print("\nChoose: ");
             e = scan.nextInt();
+            scan.nextLine();
+            System.out.println("===========================================");
 
             switch(e) {
                 case 1:
@@ -256,16 +260,17 @@ public class Menu {
     public void displayAdmin(SystemAdmin sa, ArrayList<User> userList){
         int f=0;
         do { 
-            System.out.println("1. Generate Report.");
-            System.out.println("2. Modify User Account.");
+            System.out.println("1. Generate Report");
+            System.out.println("2. Modify User Account");
             System.out.println("3. Exit.");
-            System.out.println("\nChoose: ");
+            System.out.print("\nChoose: ");
             f = scan.nextInt();
             scan.nextLine();   //clean leftover newline
+            System.out.println("===========================================");
 
             switch(f){
                 case 1:
-                    System.out.println("Enter Report ID: ");
+                    System.out.print("Enter Report ID: ");
                     String reportId = scan.nextLine();
 
                     Report report = new Report(reportId);
@@ -274,7 +279,28 @@ public class Menu {
                     System.out.println("===========================================");
                     break;
                 case 2:
-                    // to modify user account
+                    System.out.println("Users: ");
+                    if (userList.isEmpty()) {
+                        System.out.println("No users");
+                    }
+                    else {
+                        for (int i = 0; i < userList.size(); i++) {
+                            System.out.println(i+1 + ". " + userList.get(i).toString());
+                        }
+                        System.out.print("\nChoice: ");
+                        int choice = scan.nextInt();
+                        scan.nextLine();
+                        System.out.println("===========================================");
+
+                        if (userList.get(choice-1) != null) {
+                            sa.modifyUser(userList.get(choice-1), scan);
+                            this.resume();
+                            System.out.println("===========================================");
+                        }
+                        else {
+                            this.invalid();
+                        }
+                    }
                     break;
                 case 3:
                     System.out.println("Exiting...");

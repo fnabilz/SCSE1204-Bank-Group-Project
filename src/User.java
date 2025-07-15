@@ -62,6 +62,18 @@ public class User {
         return this.type;
     }
 
+     public void SetId(String newId) {
+        this.id = newId;
+    }
+
+    public void SetEmail(String newEmail) {
+        this.email = newEmail;
+    }
+
+    public void SetPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
     @Override
     public String toString() {
         return "[ID: " + getId() + ", Name: " + getName() + ", Email: " + getEmail() + ", Password: " + getPassword() + ", Type: " + getType() + "]";

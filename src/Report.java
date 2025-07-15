@@ -12,10 +12,10 @@ public class Report {
     }
 
     public void displayReport(ArrayList<User> userList) {
-        System.out.println("=== Report Details ===");
+        System.out.println("=============== Report Details ===============");
         System.out.println("Report ID: " + this.reportId);
         System.out.println("Date Generated: " + this.dateCreated);
-        System.out.println("----------------------------------");
+        System.out.println("----------------------------------------------");
         
         System.out.println("Users: ");
         if (userList.isEmpty()) {
@@ -23,7 +23,7 @@ public class Report {
         }
         else {
             for (int i = 0; i < userList.size(); i++) {
-                System.out.println(userList.get(i).toString());
+                System.out.println(i+1 + ". " + userList.get(i).toString());
             }
         }
     }

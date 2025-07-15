@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
 // SystemAdmin class
 public class SystemAdmin {
@@ -35,7 +37,32 @@ public class SystemAdmin {
         return name;
     }
 
-    public void manageSystem() {
-        System.out.println("System managed by Admin " + name);
+    public void modifyUser(User currentUser, Scanner scan) {
+        System.out.println("1. ID\n2. Email\n3. Password");
+        System.out.print("\nChoose: ");
+        int pilih = scan.nextInt();
+        scan.nextLine();
+
+        switch(pilih) {
+            case 1:
+                System.out.print("Enter new ID: ");
+                String newId = scan.nextLine();
+                currentUser.SetId(newId);
+                System.out.println("Successfully changed user's ID!");
+                break;
+            case 2:
+                System.out.print("Enter new Email: ");
+                String newEmail = scan.nextLine();
+                currentUser.SetEmail(newEmail);
+                System.out.println("Successfully changed user's email!");
+                break;
+            case 3: 
+                System.out.print("Enter new Password: ");
+                String newPassword = scan.nextLine();
+                currentUser.SetPassword(newPassword);
+                System.out.println("Successfully changed user's password!");
+                break;
+            default:
+        }
     }
 }

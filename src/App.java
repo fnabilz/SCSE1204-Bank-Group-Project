@@ -101,7 +101,7 @@ public class App {
                 System.out.println("Are you sure you want to exit the program?");
                 System.out.println("1. Yes");
                 System.out.println("2. No");
-                System.out.print("\nChoice : ");
+                System.out.print("\nChoice: ");
                 int choice = scan.nextInt();
                 scan.nextLine();
                 System.out.println("===========================================");
