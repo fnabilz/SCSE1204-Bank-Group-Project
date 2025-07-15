@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -238,13 +239,73 @@ public class Menu {
 
             switch(e) {
                 case 1:
-                    //lo.approveLoan();
+                    if(lo.getPendingLoans().isEmpty()){
+                        System.out.println("No pending loan.");
+                    }
+                    else {
+                        System.out.println("Pending Loan:");
+                        List<Loan> pending = lo.getPendingLoans();
+
+                        for(int i=0; i<pending.size(); i++){
+                            System.out.println((i+1) + ". " + pending.get(i).toString());
+                        }
+                        System.out.println("\nSelect loan to approve: ");
+                        int loanapprove = scan.nextInt();
+                        scan.nextLine();
+
+                        if (loanapprove < 1 || loanapprove > pending.size()) {
+                            System.out.println("Invalid selection.");
+                        } 
+                        else {
+                            Loan loanToApprove = pending.remove(loanapprove - 1);
+                            lo.approveLoan(loanToApprove);
+                        }
+                    }
+
+                    this.resume();
+                    System.out.println("===========================================");
                     break;
                 case 2:
-                    //lo.rejectLoan();
+                    if(lo.getPendingLoans().isEmpty()){
+                        System.out.println("No pending loan.");
+                    }
+                    else{
+                        System.out.println("Pending Loan: ");
+                        List<Loan> pending = lo.getPendingLoans();
+
+                        for(int i=0; i<pending.size(); i++){
+                            System.out.println((i+1) + ". " + pending.get(i).toString());
+                        }
+                        System.out.println("\nSelect loan to approve: ");
+                        int loanreject = scan.nextInt();
+                        scan.nextLine();
+
+                        if (loanreject < 1 || loanreject > pending.size()) {
+                            System.out.println("Invalid selection.");
+                        } 
+                        else {
+                            Loan loanToReject = pending.remove(loanreject - 1);
+                            lo.rejectLoan(loanToReject);
+                        }
+                    }
+
+                    this.resume();
+                    System.out.println("===========================================");
                     break;
                 case 3:
-                    lo.getProcessedLoans();
+                    if(lo.getProcessedLoans().isEmpty()){
+                        System.out.println("No process loan.");
+                    }
+                    else{
+                        System.out.println("Process Loan: ");
+                        List<Loan> processed = lo.getProcessedLoans();
+
+                        for(int i=0; i<processed.size(); i++){
+                            System.out.println((i+1) + ". " +processed.get(i).toString());
+                        }
+                    }
+                    this.resume();
+                    System.out.println("===========================================");
                     break;
                 case 4:
                     System.out.println("Exiting...");
