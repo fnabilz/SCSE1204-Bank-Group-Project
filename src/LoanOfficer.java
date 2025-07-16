@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LoanOfficer extends User {
@@ -19,6 +20,7 @@ public class LoanOfficer extends User {
 
     public void approveLoan(Loan loan) {
         loan.setLoanOfficer(this);
+        loan.setApprovalDate(new Date());
         processedLoans.add(loan);
         System.out.println("Loan " + loan.getLoanId() + " approved by Officer " + super.getName());
     }

@@ -85,21 +85,23 @@ class Loan {
         return calculateTotalPayment() - amount;
     }
 
+    public void setApprovalDate(Date newDate) {
+        this.approvalDate = newDate;
+    }
     
     @Override
     public String toString() {
-        return "Loan [" +
-                "loanType='" + loanType + '\'' +
-                ", loanId='" + loanId + '\'' +
-                ", amount=" + amount +
-                ", interestRate=" + interestRate +
-                ", term=" + term +
-                ", applicationDate=" + applicationDate +
-                ", approvalDate=" + approvalDate +
-                ", loanOfficer=" + (loanOfficer != null ? loanOfficer.getName() : "None") +
-                ", monthlyPayment=" + String.format("%.2f", calculateMonthlyPayment()) +
-                ", totalPayment=" + String.format("%.2f", calculateTotalPayment()) +
-                ", totalInterest=" + String.format("%.2f", calculateTotalInterest()) +
-                ']';
+        return "[loanId = '" + loanId + "']" +
+                "\nloanType = '" + loanType +
+                "\namount = " + amount +
+                "\ninterestRate = " + interestRate +
+                "\nterm = " + term +
+                "\napplicationDate = " + applicationDate +
+                "\napprovalDate = " + approvalDate +
+                "\nloanOfficer = " + (loanOfficer != null ? loanOfficer.getName() : "None") +
+                "\nmonthlyPayment = " + String.format("%.2f", calculateMonthlyPayment()) +
+                "\ntotalPayment = " + String.format("%.2f", calculateTotalPayment()) +
+                "\ntotalInterest = " + String.format("%.2f", calculateTotalInterest()) +
+                "\n---------------------------------------";
     }
 }
