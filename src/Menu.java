@@ -230,7 +230,7 @@ public class Menu {
         do {
             System.out.println("1. Approve Loan");
             System.out.println("2. Reject Loan");
-            System.out.println("3. Print Process Loan");
+            System.out.println("3. Print Processed Loan");
             System.out.println("4. Exit");
             System.out.print("\nChoose: ");
             e = scan.nextInt();
