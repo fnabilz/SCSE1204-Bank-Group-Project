@@ -249,7 +249,7 @@ public class Menu {
                         for(int i=0; i<pending.size(); i++){
                             System.out.println((i+1) + ". " + pending.get(i).toString());
                         }
-                        System.out.println("\nSelect loan to approve: ");
+                        System.out.print("\nSelect loan to approve: ");
                         int loanapprove = scan.nextInt();
                         scan.nextLine();
 
@@ -276,7 +276,7 @@ public class Menu {
                         for(int i=0; i<pending.size(); i++){
                             System.out.println((i+1) + ". " + pending.get(i).toString());
                         }
-                        System.out.println("\nSelect loan to approve: ");
+                        System.out.print("\nSelect loan to reject: ");
                         int loanreject = scan.nextInt();
                         scan.nextLine();
 
