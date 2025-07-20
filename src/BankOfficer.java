@@ -21,6 +21,7 @@ public class BankOfficer extends User {
         String accId = scan.nextLine();
         System.out.print("Balance: ");
         double balance = scan.nextDouble();
+        scan.nextLine();
 
         AccountHolder newAcc = new AccountHolder(id, name, email, password, new BankAccount(accId, balance));
 
