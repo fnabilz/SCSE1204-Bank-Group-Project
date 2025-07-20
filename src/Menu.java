@@ -54,6 +54,7 @@ public class Menu {
 
                     System.out.println("Enter amount to tranfer from Main Account to Tabung: ");
                     double transferAmt = scan.nextDouble();
+                    scan.nextLine();
 
                     if(ah.getMainBalance()>=transferAmt){
                         ah.withdrawFromMain(transferAmt);
@@ -95,6 +96,7 @@ public class Menu {
 
                     System.out.print("Enter amount to transfer from Main Account: ");
                     double amt3 = scan.nextDouble();
+                    scan.nextLine();
 
                     ah.transferToTabung(selectedTabung.getAccountNumber(), amt3);
                     
@@ -118,6 +120,7 @@ public class Menu {
 
                     System.out.print("Choose Tabung: ");
                     int choice2 = scan.nextInt();
+                    scan.nextLine();
 
                     if (choice2 < 1 || choice2 > tabungs2.size()) {
                         System.out.println("Invalid selection.");
@@ -128,6 +131,7 @@ public class Menu {
                     
                     System.out.print("Enter amount to transfer from Tabung: ");
                     double amt4 = scan.nextDouble();
+                    scan.nextLine();
 
                     ah.transferFromTabung(selectedTabung2.getAccountNumber(), amt4);
 
@@ -141,8 +145,10 @@ public class Menu {
                     String type = scan.nextLine();
                     System.out.print("Enter amount: ");
                     double amount = scan.nextDouble();
+                    scan.nextLine();
                     System.out.print("Enter interest rate (%): ");
                     double rate = scan.nextDouble();
+                    scan.nextLine();
                     System.out.print("Enter term (years): ");
                     int term = scan.nextInt();
                     scan.nextLine();
@@ -172,9 +178,10 @@ public class Menu {
         
         int pilih = 0;
 
-        while (pilih != 2) {
+        while (pilih != 3) {
             System.out.println("1. Register Account");
-            System.out.println("2. Exit");
+            System.out.println("2. View Account Details");
+            System.out.println("3. Exit");
             System.out.print("\nChoice: ");
             pilih = scan.nextInt();
             scan.nextLine();
@@ -185,6 +192,19 @@ public class Menu {
                 System.out.println("\nAccount registered!");
                 this.resume();
                 System.out.println("===========================================");
+            }
+            else if (pilih == 2) {
+                System.out.println("Account List:");
+                for (int i = 0; i < accountList.size(); i++) {
+                    System.out.println(i+1 + ". " + accountList.get(i).getName());
+                }
+
+                System.out.print("\nChoice: ");
+                int pilih2 = scan.nextInt();
+                scan.nextLine();
+                bankOfficer.viewAccountDetails(accountList.get(pilih2-1));
+                this.resume();
+                 System.out.println("===========================================");
             }
 
         }

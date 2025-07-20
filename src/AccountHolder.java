@@ -109,4 +109,7 @@ public class AccountHolder extends User {
         return loan;
     }
     
+    public String getAccountId() {
+        return mainAccount.getAccountID();
+    }
 }

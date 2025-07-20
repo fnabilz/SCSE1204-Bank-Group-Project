@@ -29,6 +29,20 @@ public class BankOfficer extends User {
     }
 
     public void viewAccountDetails(AccountHolder currentAccount) {
-        
+        if (currentAccount != null) {
+            System.out.println("=============== Account Details ===============");
+            System.out.println("Name: " + currentAccount.getName());
+            System.out.println("Account Number: " + currentAccount.getAccountId());
+            System.out.println("Main Balance: " + currentAccount.getMainBalance());
+            System.out.println("Tabung:");
+            ArrayList<Tabung> userTabung = currentAccount.getTabungAccounts();
+            if (userTabung.size() == 0)
+                System.out.println("None");
+            else {
+                for (int i = 0; i < userTabung.size(); i++) {
+                    System.out.println(i+1 + ". ID: " + userTabung.get(i).getAccountNumber() + ", Balance: " + userTabung.get(i).getBalance());
+                }
+            }
+        }
     }
 }
