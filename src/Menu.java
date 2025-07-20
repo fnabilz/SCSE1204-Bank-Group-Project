@@ -204,7 +204,7 @@ public class Menu {
                 scan.nextLine();
                 bankOfficer.viewAccountDetails(accountList.get(pilih2-1));
                 this.resume();
-                 System.out.println("===========================================");
+                System.out.println("===========================================");
             }
 
         }
